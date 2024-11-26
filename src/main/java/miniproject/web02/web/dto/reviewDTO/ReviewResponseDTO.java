@@ -36,4 +36,22 @@ public class ReviewResponseDTO {
         Boolean isFirst;
         Boolean isLast;
     }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewImageDTO {
+        Long reviewImageId;
+        String imageUrl;
+        LocalDateTime createdAt;
+    }
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReviewImageListDTO {
+        List<ReviewImageDTO> reviewImageList;
+    }
 }

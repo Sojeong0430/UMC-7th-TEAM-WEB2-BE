@@ -65,4 +65,12 @@ public class ApiController {
                 Long.parseLong(lectureId), rating, sortField, page);
         return ApiResponse.of(SuccessStatus.SUCCESS_FETCH_REVIEW_LIST, result);
     }
+
+    @Operation(summary = "특정 강의의 리뷰 이미지 조회 API", description = "강의 상세 페이지의 최신 리뷰 이미지 3개 조회")
+    @GetMapping("/review_img/{lectureId}")
+    public ApiResponse<ReviewResponseDTO.ReviewImageListDTO> getReviewImgList (@PathVariable(name = "lectureId") Long lectureId){
+        ReviewResponseDTO.ReviewImageListDTO result = reviewService.getReviewImages(lectureId);
+
+        return ApiResponse.of(SuccessStatus.SUCCESS_FETCH_REVIEW_IMAGE, result);
+    }
 }
