@@ -5,7 +5,8 @@ import miniproject.web02.domain.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ReveiwRepository extends JpaRepository<Review,Long> {
+public interface ReviewRepository extends JpaRepository<Review,Long>, JpaSpecificationExecutor<Review> {
     List<Review> findAllByLecture(Lecture lecture);
 }
