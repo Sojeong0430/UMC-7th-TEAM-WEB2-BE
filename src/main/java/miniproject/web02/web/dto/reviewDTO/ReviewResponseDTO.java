@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ReviewResponseDTO {
+    // 개별 리뷰 정보
     @Builder
     @Getter
     @NoArgsConstructor
@@ -18,12 +19,15 @@ public class ReviewResponseDTO {
     public static class ReviewDTO {
         Long reviewId;
         BigDecimal rating;
+        String content;
         StudyTime studyTime;
         Integer likes;
-        String content;
         LocalDateTime createdAt;
+        String imageUrl;
+        Long lectureId;
     }
 
+    // 리뷰 목록 정보
     @Builder
     @Getter
     @NoArgsConstructor
@@ -36,7 +40,7 @@ public class ReviewResponseDTO {
         Boolean isFirst;
         Boolean isLast;
     }
-
+    // 리뷰 이미지 정보
     @Builder
     @Getter
     @NoArgsConstructor
@@ -46,7 +50,7 @@ public class ReviewResponseDTO {
         String imageUrl;
         LocalDateTime createdAt;
     }
-
+    // 리뷰 이미지 목록 정보
     @Builder
     @Getter
     @NoArgsConstructor

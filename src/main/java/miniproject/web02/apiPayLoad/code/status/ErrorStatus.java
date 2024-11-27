@@ -19,7 +19,11 @@ public enum ErrorStatus implements BaseErrorCode {
     LECTURE_NOT_FOUND(HttpStatus.BAD_REQUEST, "LECTURE4001", "존재하지 않는 강의입니다."),
 
     // 리뷰 관련 응답
-    REVIEW_NOT_FOUND(HttpStatus.BAD_REQUEST, "REVIEW4001", "존재하지 않는 리뷰입니다.");
+    REVIEW_NOT_FOUND(HttpStatus.BAD_REQUEST, "REVIEW4001", "존재하지 않는 리뷰입니다."),
+
+    //파일 첨부 관련 응답
+    FILE_UPLOAD_FAILED(HttpStatus.BAD_REQUEST,"UPLOAD500", "파일 업로드 중 오류가 발생했습니다.");
+
 
     private final HttpStatus httpStatus;
     private final String code;

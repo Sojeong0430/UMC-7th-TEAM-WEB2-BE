@@ -19,7 +19,8 @@ public enum SuccessStatus implements BaseCode {
 
     // 리뷰 관련 응답
     SUCCESS_FETCH_REVIEW_LIST(HttpStatus.OK, "REVIEW2001", "리뷰 목록을 성공적으로 가져왔습니다."),
-    SUCCESS_FETCH_REVIEW_IMAGE(HttpStatus.OK, "REVIEW2002", "리뷰 이미지를 성공적으로 가져왔습니다.");
+    SUCCESS_FETCH_REVIEW_IMAGE(HttpStatus.OK, "REVIEW2002", "리뷰 이미지를 성공적으로 가져왔습니다."),
+    SUCCESS_REVIEW_CREATED(HttpStatus.OK,"REVIEW2003", "리뷰가 성공적으로 생성되었습니다.");
 
 
 
