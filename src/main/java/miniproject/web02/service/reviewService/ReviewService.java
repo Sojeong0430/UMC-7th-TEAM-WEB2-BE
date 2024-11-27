@@ -11,6 +11,8 @@ public interface ReviewService {
 
     ReviewResponseDTO.ReviewDTO createdReview(ReviewRequestDto requestDto,MultipartFile image);
 
+    void deleteReview(Long reviewId);
+
 
 }
 
