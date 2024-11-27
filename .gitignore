@@ -41,6 +41,3 @@ out/
 /src/main/resources/application-local.yml
 /src/main/resources/application.yml.DS_Store
 
-
-*.yml
-/src/main/resources/application-local.yml

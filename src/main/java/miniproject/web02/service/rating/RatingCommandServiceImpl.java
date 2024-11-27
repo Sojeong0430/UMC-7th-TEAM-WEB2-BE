@@ -3,7 +3,7 @@ package miniproject.web02.service.rating;
 import lombok.RequiredArgsConstructor;
 import miniproject.web02.domain.Lecture;
 import miniproject.web02.domain.Review;
-import miniproject.web02.repository.ReviewRepository;
+import miniproject.web02.repository.ReviewSearchRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -14,24 +14,22 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class RatingCommandServiceImpl implements RatingCommandService {
 
-    private final ReviewRepository reveiwRepository;
+    private final ReviewSearchRepository reviewSearchRepository;
 
     @Override
     public List<BigDecimal> getRatingList (Lecture lecture){
-        List<Review> lectureReviewList = reveiwRepository.findAllByLecture(lecture); // 리뷰 리스트
+        List<Review> lectureReviewList = reviewSearchRepository.findAllByLecture(lecture);
 
         List<BigDecimal> lectureReviewRatingList = lectureReviewList.stream()
                 .map(Review::getRating)
-                .collect(Collectors.toList()); //리뷰 점수 리스트
+                .collect(Collectors.toList());
 
         return lectureReviewRatingList;
     }
-
-
     @Override
     public int[] getRatingCounts(List<BigDecimal>  lectureReviewRatingList){
 
-        int[] ratingCount = new int[5]; // 점수 카운트 담길 배열
+        int[] ratingCount = new int[5];
 
         lectureReviewRatingList.stream()
                 .forEach(i -> {
