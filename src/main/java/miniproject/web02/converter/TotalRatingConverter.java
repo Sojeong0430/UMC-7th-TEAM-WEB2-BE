@@ -37,6 +37,7 @@ public class TotalRatingConverter {
                 .lectureId(lecture.getLectureID())
                 .lectureName(lecture.getName())
                 .reviewCounts(totalSum)
+                .totalRating(BigDecimal.valueOf(0.00))
                 .ratingCounts(ratingCounts)
                 .build();
     } // getRatingInfoDTO DTO 만들기
