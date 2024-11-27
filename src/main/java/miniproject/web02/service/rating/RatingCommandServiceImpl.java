@@ -26,8 +26,6 @@ public class RatingCommandServiceImpl implements RatingCommandService {
 
         return lectureReviewRatingList;
     }
-
-
     @Override
     public int[] getRatingCounts(List<BigDecimal>  lectureReviewRatingList){
 

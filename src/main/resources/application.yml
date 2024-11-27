@@ -1,8 +1,12 @@
 spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB # 업로드 가능한 파일의 최대 크기
+      max-request-size: 50MB #요청 전체의 최대 크기(여러 파일 포함)
   datasource:
-    url: jdbc:mysql://localhost:3306/WEB2
+    url: jdbc:mysql://localhost:3306/mini_web02
     username: root
-    password: thwjd1629
+    password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
   sql:
     init:
