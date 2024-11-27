@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ReviewRepository extends JpaRepository<Review,Long> {
+public interface ReviewSearchRepository extends JpaRepository<Review,Long> {
     Page<Review> findAllByLecture(Lecture lecture, PageRequest pageRequest);
     List<Review> findAllByLecture(Lecture lecture);
 }
