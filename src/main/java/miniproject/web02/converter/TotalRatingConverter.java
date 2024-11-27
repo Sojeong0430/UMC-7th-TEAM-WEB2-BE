@@ -24,7 +24,20 @@ public class TotalRatingConverter {
                 .lectureId(lecture.getLectureID())
                 .lectureName(lecture.getName())
                 .reviewCounts(totalSum)
-                .totalRating(TotalRatingConverter.totalRatingcalculator(lectureReviewRatingList)) // 뭐지...???
+                .totalRating(TotalRatingConverter.totalRatingcalculator(lectureReviewRatingList))
+                .ratingCounts(ratingCounts)
+                .build();
+    } // getRatingInfoDTO DTO 만들기
+
+    public static totalRatingResponseDTO.getRatingInfoDTO toTotalRatigDTO(Lecture lecture, int[] ratingCounts) {
+
+        int totalSum = Arrays.stream(ratingCounts).sum();
+
+        return totalRatingResponseDTO.getRatingInfoDTO.builder()
+                .lectureId(lecture.getLectureID())
+                .lectureName(lecture.getName())
+                .reviewCounts(totalSum)
+                .totalRating(BigDecimal.valueOf(0.00))
                 .ratingCounts(ratingCounts)
                 .build();
     } // getRatingInfoDTO DTO 만들기
