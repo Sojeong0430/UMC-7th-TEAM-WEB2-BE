@@ -34,5 +34,5 @@ public class LectureRequestDTO {
     @NotNull(message = "레벨은 필수 입력 값입니다.")
     private Level level;
 
-    private MultipartFile image;
+    //private MultipartFile image;
 }
