@@ -1,6 +1,8 @@
 package miniproject.web02.service.ReviewSearch;
 
 import lombok.RequiredArgsConstructor;
+import miniproject.web02.apiPayLoad.code.status.ErrorStatus;
+import miniproject.web02.apiPayLoad.exception.handler.TempHandler;
 import miniproject.web02.domain.Lecture;
 import miniproject.web02.domain.Review;
 import miniproject.web02.repository.LectureRepository;
@@ -16,8 +18,8 @@ public class ReviewSearchCommandServiceImpl implements ReviewSearchCommandServic
     private final ReviewSearchRepository reviewSearchRepository;
     private final LectureRepository lectureRepository;
     @Override
-    public Page<Review> getReviewList (String keyword,Integer page){ //리뷰 리스트 가져옴
-        Lecture lecture = lectureRepository.findByName("자바"); //쿼리스트링의 키워드로 강의 찾음 <= 여기서 오류나는것같은데...
+    public Page<Review> getReviewList (String keyword,Integer page){
+        Lecture lecture = lectureRepository.findByName(keyword).orElseThrow(() -> new TempHandler(ErrorStatus.LECTURE_NOT_FOUND));
         Page<Review> reviewPage = reviewSearchRepository.findAllByLecture(lecture,PageRequest.of(page,6));
         return reviewPage;
     }

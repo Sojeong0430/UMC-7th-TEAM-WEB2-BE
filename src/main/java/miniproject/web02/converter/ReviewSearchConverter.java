@@ -15,11 +15,10 @@ public class ReviewSearchConverter {
                 .lectureName(review.getLecture().getName())
                 .platform(String.valueOf(review.getLecture().getPlatform()))
                 .teacher(review.getLecture().getTeacher())
-                .reviewCreatedAt(review.getCreatedAt().toLocalDate())
                 .rating(review.getRating())
                 .content(review.getContent())
                 .build();
-    } //ReviewPreviewDTO
+    }
 
     public static ReviewSearchResponseDTO.ReviewPreviewListDTO toReviewPreviewListDTO(Page<Review> reviewList){
 
@@ -34,5 +33,5 @@ public class ReviewSearchConverter {
                 .totalElements(reviewList.getTotalElements())
                 .listSize(missionPreviewDTOList.size())
                 .build();
-    } //ReviewPreviewListDTO
+    }
 }
