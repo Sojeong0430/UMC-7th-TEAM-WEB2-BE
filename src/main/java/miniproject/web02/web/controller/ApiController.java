@@ -18,13 +18,16 @@ import miniproject.web02.repository.ReviewRepository;
 import miniproject.web02.service.lectureSerivce.LectureService;
 import miniproject.web02.service.rating.RatingCommandService;
 import miniproject.web02.service.reviewService.ReviewService;
+import miniproject.web02.web.dto.lectureDTO.LectureRequestDTO;
 import miniproject.web02.web.dto.ReviewSearchDTO.ReviewSearchResponseDTO;
 import miniproject.web02.web.dto.lectureDTO.LectureResponseDTO;
 import miniproject.web02.web.dto.reviewDTO.ReviewResponseDTO;
 import miniproject.web02.web.dto.totalRatingDTO.totalRatingResponseDTO;
+import org.springframework.http.MediaType;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -41,6 +44,17 @@ public class ApiController {
     private final ReviewService reviewService;
     private final RatingCommandService ratingCommandService;
     private final ReviewSearchCommandService reviewSearchCommandService;
+
+    @Operation(summary = "강의 등록 API", description = "새로운 강의 정보를 등록합니다.")
+    @PostMapping(value = "/lectures", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ApiResponse<LectureResponseDTO.LectureDTO> createLecture(
+            @RequestPart("lectureRequest") @Validated LectureRequestDTO lectureRequestDTO,
+            @RequestPart(value = "image", required = false) MultipartFile image) {
+
+        // 강의 생성
+        LectureResponseDTO.LectureDTO createdLecture = lectureService.createLecture(lectureRequestDTO, image);
+        return ApiResponse.of(SuccessStatus.SUCCESS_CREATE_LECTURE, createdLecture);
+    }
 
     @Operation(summary = "총 별점 & 별점 개수 조회 API", description = "해당하는 강의의 총 별점 & 점수 대 별 별점 개수를 조회하는 API")
     @GetMapping("/rating_info/{lectureId}")
