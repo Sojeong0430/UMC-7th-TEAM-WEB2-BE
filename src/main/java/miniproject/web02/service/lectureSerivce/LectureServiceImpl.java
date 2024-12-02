@@ -81,7 +81,8 @@ public class LectureServiceImpl implements LectureService {
                 .lectureName(savedLecture.getName())
                 .platform(savedLecture.getPlatform().toString())
                 .teacher(savedLecture.getTeacher())
-                .category(savedLecture.getCategory().toString())
+                .category(savedLecture.getCategory() != null ? savedLecture.getCategory().toString() : null)
+                .level(savedLecture.getLevel() != null ? savedLecture.getLevel().toString() : null)
                 .totalRating(savedLecture.getTotalRating())
                 .imageUrl(imageUrl)  // 이미지 URL 반환
                 .build();

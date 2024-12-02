@@ -28,10 +28,10 @@ public class LectureRequestDTO {
     @NotNull(message = "플랫폼 정보는 필수 입력 값입니다.")
     private Platform platform;
 
-    @NotNull(message = "카테고리는 필수 입력 값입니다.")
+
     private Category category;
 
-    @NotNull(message = "레벨은 필수 입력 값입니다.")
+
     private Level level;
 
     //private MultipartFile image;
