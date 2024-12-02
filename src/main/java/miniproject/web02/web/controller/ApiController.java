@@ -46,16 +46,6 @@ public class ApiController {
     private final RatingCommandService ratingCommandService;
     private final ReviewSearchCommandService reviewSearchCommandService;
 
-    @Operation(summary = "강의 등록 API", description = "새로운 강의 정보를 등록합니다.")
-    @PostMapping(value = "/lectures", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ApiResponse<LectureResponseDTO.LectureDTO> createLecture(
-            @RequestPart("lectureRequest") @Validated LectureRequestDTO lectureRequestDTO,
-            @RequestPart(value = "image", required = false) MultipartFile image) {
-
-        // 강의 생성
-        LectureResponseDTO.LectureDTO createdLecture = lectureService.createLecture(lectureRequestDTO, image);
-        return ApiResponse.of(SuccessStatus.SUCCESS_CREATE_LECTURE, createdLecture);
-    }
 
     @Operation(summary = "총 별점 & 별점 개수 조회 API", description = "해당하는 강의의 총 별점 & 점수 대 별 별점 개수를 조회하는 API")
     @GetMapping("/rating_info/{lectureId}")
@@ -70,7 +60,7 @@ public class ApiController {
         return ApiResponse.onSuccess(TotalRatingConverter.toTotalRatigDTO(lecture,ratingCounts,lectureReviewRatingList));
     }
 
-    @Operation(summary = "강의 정보 조회 API", description = "강의 상세 페이지의 강의 정보 조회")
+    @Operation(summary = "특정 강의 정보 조회 API", description = "강의 상세 페이지의 강의 정보 조회")
     @GetMapping("/lecture_info/{lectureId}")
     public ApiResponse<LectureResponseDTO.LectureDTO> getLectureInfo (@PathVariable(name = "lectureId") Long lectureId){
         LectureResponseDTO.LectureDTO lectureDTO = lectureService.getLecture(lectureId);

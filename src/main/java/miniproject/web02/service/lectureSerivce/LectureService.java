@@ -4,10 +4,13 @@ import miniproject.web02.web.dto.lectureDTO.LectureRequestDTO;
 import miniproject.web02.web.dto.lectureDTO.LectureResponseDTO;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public interface LectureService {
     LectureResponseDTO.LectureDTO getLecture(Long lectureId);
 
     //LectureResponseDTO createLecture(LectureRequestDTO lectureRequestDto, MultipartFile image);
     //LectureResponseDTO.LectureDTO createLecture(LectureRequestDTO lectureRequestDto);
     LectureResponseDTO.LectureDTO createLecture(LectureRequestDTO lectureRequestDTO, MultipartFile image);
+    List<LectureResponseDTO.LectureDTO> getAllLectures();
 }
