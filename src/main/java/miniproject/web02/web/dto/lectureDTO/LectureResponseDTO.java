@@ -19,6 +19,7 @@ public class LectureResponseDTO {
         String teacher;
         String imageUrl;
         String category;
+        String level;
         BigDecimal totalRating;
     }
 }
