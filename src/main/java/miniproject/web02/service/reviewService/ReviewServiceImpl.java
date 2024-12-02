@@ -7,6 +7,7 @@ import miniproject.web02.domain.Lecture;
 import miniproject.web02.domain.Review;
 import miniproject.web02.domain.ReviewImage;
 import miniproject.web02.repository.LectureRepository;
+import miniproject.web02.repository.LectureReviewSpecification;
 import miniproject.web02.repository.ReviewImageRepository;
 import miniproject.web02.repository.ReviewRepository;
 import miniproject.web02.service.S3FileStorageService;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,34 +41,33 @@ public class ReviewServiceImpl implements ReviewService {
         Lecture lecture = lectureRepository.findById(lectureId)
                 .orElseThrow(() -> new TempHandler(ErrorStatus.LECTURE_NOT_FOUND));
 
-        Pageable pageable;
-        if ("recommend".equals(sortField)) {
-            pageable = PageRequest.of(page, 5,
-                    Sort.by(Sort.Order.desc("recommend"), Sort.Order.desc("createdAt")));
-        } else {
-            pageable = PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, sortField));
-        }
-
-        Page<Review> reviews = reviewRepository.findByLecture(lecture, pageable);
-        List<Review> reviewList = new ArrayList<>(reviews.getContent());
+        Specification<Review> spec = Specification.where(
+                (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("lecture"), lecture));
 
         if (rating != null) {
-            reviewList = reviewList.stream()
-                    .filter(review -> review.getRating().equals(rating))
-                    .collect(Collectors.toList());
+            spec = spec.and(LectureReviewSpecification.hasRating(rating));
         }
 
-        List<ReviewResponseDTO.ReviewDTO> reviewDTOList = reviewList.stream()
-                .map(review -> {
-                    return ReviewResponseDTO.ReviewDTO.builder()
-                            .reviewId(review.getReviewId())
-                            .rating(review.getRating())
-                            .studyTime(review.getStudyTime())
-                            .likes(review.getLikes())
-                            .content(review.getContent())
-                            .createdAt(review.getCreatedAt())
-                            .build();
-                })
+        Sort sort;
+        if ("recommend".equals(sortField)) {
+            sort = Sort.by(Sort.Order.desc("likes")).and(Sort.by(Sort.Order.desc("createdAt")));
+        } else {
+            sort = Sort.by(Sort.Order.desc("createdAt"));
+        }
+
+        Pageable pageable = PageRequest.of(page, 5, sort);
+
+        Page<Review> reviews = reviewRepository.findAll(spec, pageable);
+
+        List<ReviewResponseDTO.ReviewDTO> reviewDTOList = reviews.getContent().stream()
+                .map(review -> ReviewResponseDTO.ReviewDTO.builder()
+                        .reviewId(review.getReviewId())
+                        .rating(review.getRating())
+                        .studyTime(review.getStudyTime())
+                        .likes(review.getLikes())
+                        .content(review.getContent())
+                        .createdAt(review.getCreatedAt())
+                        .build())
                 .collect(Collectors.toList());
 
         return ReviewResponseDTO.ReviewListDTO.builder()

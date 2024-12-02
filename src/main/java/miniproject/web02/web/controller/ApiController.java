@@ -21,6 +21,7 @@ import miniproject.web02.service.reviewService.ReviewService;
 import miniproject.web02.web.dto.lectureDTO.LectureRequestDTO;
 import miniproject.web02.web.dto.ReviewSearchDTO.ReviewSearchResponseDTO;
 import miniproject.web02.web.dto.lectureDTO.LectureResponseDTO;
+import miniproject.web02.web.dto.reviewDTO.ReviewFilterRequestDTO;
 import miniproject.web02.web.dto.reviewDTO.ReviewResponseDTO;
 import miniproject.web02.web.dto.totalRatingDTO.totalRatingResponseDTO;
 import org.springframework.http.MediaType;
@@ -84,13 +85,21 @@ public class ApiController {
             @Parameter(name = "sort", description = "정렬 필드 (추천순-recommend, 최신순-createdAt)")
     })
     public ApiResponse<ReviewResponseDTO.ReviewListDTO> getReviewList (
-            @RequestParam String lectureId,
+            @RequestParam Long lectureId,
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "rating", required = false) Integer rating,
             @RequestParam(name = "sort", defaultValue = "createdAt") String sortField) {
-        ReviewResponseDTO.ReviewListDTO result = reviewService.getLectureReviews(
-                Long.parseLong(lectureId), rating, sortField, page);
-        return ApiResponse.of(SuccessStatus.SUCCESS_FETCH_REVIEW_LIST, result);
+        ReviewFilterRequestDTO filterRequest = new ReviewFilterRequestDTO(rating, sortField);
+
+        // 리뷰 서비스 호출
+        ReviewResponseDTO.ReviewListDTO response = reviewService.getLectureReviews(
+                lectureId,
+                filterRequest.getRating() != null ? filterRequest.getRating().intValue() : null,
+                filterRequest.getSort(),
+                page
+        );
+
+        return ApiResponse.of(SuccessStatus.SUCCESS_FETCH_REVIEW_LIST, response);
     }
 
     @Operation(summary = "특정 강의의 리뷰 이미지 조회 API", description = "강의 상세 페이지의 최신 리뷰 이미지 3개 조회")
