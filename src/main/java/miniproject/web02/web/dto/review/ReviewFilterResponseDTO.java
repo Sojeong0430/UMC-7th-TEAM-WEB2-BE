@@ -2,6 +2,7 @@ package miniproject.web02.web.dto.review;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 import lombok.*;
 import miniproject.web02.domain.enums.Category;
 import miniproject.web02.domain.enums.Platform;
@@ -19,4 +20,5 @@ public class ReviewFilterResponseDTO {
     private LocalDateTime createdAt;
     private Category lectureCategory;
     private Integer likes;
+    private List<String> imageUrls;
 }
