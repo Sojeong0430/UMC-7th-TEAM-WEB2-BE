@@ -107,7 +107,8 @@ public class ApiController {
             @Parameter(name = "page", description = "페이지 번호, 0번이 1 페이지입니다."),
     })
     public ApiResponse<ReviewSearchResponseDTO.ReviewPreviewListDTO> searchReviewByLectureName(@RequestParam("keyword") String keyword, @RequestParam(name = "page", defaultValue = "0") Integer page) {
+        Lecture lecture = lectureRepository.findByName(keyword).orElseThrow(() -> new TempHandler(ErrorStatus.LECTURE_NOT_FOUND));
         Page<Review> reviewList = reviewSearchCommandService.getReviewList(keyword,page);
-        return ApiResponse.onSuccess(ReviewSearchConverter.toReviewPreviewListDTO(reviewList));
+        return ApiResponse.onSuccess(ReviewSearchConverter.toReviewPreviewListDTO(reviewList,lecture));
     }
 }
