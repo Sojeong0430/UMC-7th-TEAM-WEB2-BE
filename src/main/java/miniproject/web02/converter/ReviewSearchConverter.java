@@ -1,5 +1,6 @@
 package miniproject.web02.converter;
 
+import miniproject.web02.domain.Lecture;
 import miniproject.web02.domain.Review;
 import miniproject.web02.web.dto.ReviewSearchDTO.ReviewSearchResponseDTO;
 import org.springframework.data.domain.Page;
@@ -20,12 +21,16 @@ public class ReviewSearchConverter {
                 .build();
     }
 
-    public static ReviewSearchResponseDTO.ReviewPreviewListDTO toReviewPreviewListDTO(Page<Review> reviewList){
+    public static ReviewSearchResponseDTO.ReviewPreviewListDTO toReviewPreviewListDTO(Page<Review> reviewList, Lecture lecture){
 
         List<ReviewSearchResponseDTO.ReviewPreviewDTO> missionPreviewDTOList = reviewList.stream()
                 .map(ReviewSearchConverter::toReviewPreviewDTO).collect(Collectors.toList());
 
         return ReviewSearchResponseDTO.ReviewPreviewListDTO.builder()
+                .lectureId(lecture.getLectureID())
+                .lectureName(lecture.getName())
+                .platform(String.valueOf(lecture.getPlatform()))
+                .teacher(lecture.getTeacher())
                 .reviewList(missionPreviewDTOList)
                 .isLast(reviewList.isLast())
                 .isFirst(reviewList.isFirst())

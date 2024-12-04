@@ -27,6 +27,10 @@ public class ReviewSearchResponseDTO {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class ReviewPreviewListDTO{
+        Long lectureId;
+        String lectureName;
+        String platform;
+        String teacher;
         List<ReviewPreviewDTO> reviewList;
         Integer listSize;
         Integer totalPage;
