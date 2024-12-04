@@ -36,6 +36,7 @@ public class ReviewController {
     private static final Logger logger= LoggerFactory.getLogger(ReviewController.class);
 
     @GetMapping
+    @Operation(summary = "리뷰 필터링 API", description = "카테고리, 난이도, 수강기간, 추천순, 최신순으로 리뷰를 필터링합니다.")
     public ResponseEntity<List<ReviewFilterResponseDTO>> getFilteredReviews(
             @RequestParam(value = "category", required = false) Category category,
             @RequestParam(value = "level", required = false) Level level,

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import miniproject.web02.domain.Review;
+import miniproject.web02.domain.ReviewImage;
 import miniproject.web02.repository.ReviewRepository;
 import miniproject.web02.repository.ReviewSpecification;
 import miniproject.web02.web.dto.review.FilterRequestDTO;
@@ -51,6 +52,11 @@ public class ReviewFilterService {
     }
 
     private ReviewFilterResponseDTO toDTO(Review review) {
+        List<String> imageUrls = review.getReviewImageList()
+                .stream()
+                .map(ReviewImage::getImageUrl)
+                .collect(Collectors.toList());
+
         return new ReviewFilterResponseDTO(
                 review.getReviewId(),
                 review.getLecture().getName(),
@@ -60,7 +66,8 @@ public class ReviewFilterService {
                 review.getRating(),
                 review.getCreatedAt(),
                 review.getLecture().getCategory(),
-                review.getLikes()
+                review.getLikes(),
+                imageUrls
         );
     }
 }
