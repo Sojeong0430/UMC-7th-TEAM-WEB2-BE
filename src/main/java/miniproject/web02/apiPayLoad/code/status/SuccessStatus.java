@@ -16,6 +16,7 @@ public enum SuccessStatus implements BaseCode {
     // 강의 관련 응답
     SUCCESS_FETCH_LECTURE(HttpStatus.OK, "LECTURE2001", "강의 정보를 성공적으로 가져왔습니다."),
     SUCCESS_CREATE_LECTURE(HttpStatus.OK, "LECTURE2002", "강의 정보를 성공적으로 등록했습니다."),
+    SUCCESS_FETCH_LECTURES(HttpStatus.OK, "LETURE2003", "전체 강의 정보를 성공적으로 가져왔습니다."),
 
     // 리뷰 관련 응답
     SUCCESS_FETCH_REVIEW_LIST(HttpStatus.OK, "REVIEW2001", "리뷰 목록을 성공적으로 가져왔습니다."),

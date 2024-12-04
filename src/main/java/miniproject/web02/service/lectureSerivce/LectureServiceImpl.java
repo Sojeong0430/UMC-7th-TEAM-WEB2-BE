@@ -14,6 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class LectureServiceImpl implements LectureService {
@@ -78,9 +81,31 @@ public class LectureServiceImpl implements LectureService {
                 .lectureName(savedLecture.getName())
                 .platform(savedLecture.getPlatform().toString())
                 .teacher(savedLecture.getTeacher())
-                .category(savedLecture.getCategory().toString())
+                .category(savedLecture.getCategory() != null ? savedLecture.getCategory().toString() : null)
+                .level(savedLecture.getLevel() != null ? savedLecture.getLevel().toString() : null)
                 .totalRating(savedLecture.getTotalRating())
                 .imageUrl(imageUrl)  // 이미지 URL 반환
                 .build();
+    }
+
+    @Override
+    public List<LectureResponseDTO.LectureDTO> getAllLectures() {
+        List<Lecture> lectures = lectureRepository.findAll(); // Fetch all lectures
+
+        return lectures.stream()
+                .map(lecture -> {
+                    String imageUrl = lectureImageRepository.findFirstByLecture(lecture)
+                            .map(LectureImage::getImageUrl)
+                            .orElse(null);
+
+                    return LectureResponseDTO.LectureDTO.builder()
+                            .lectureId(lecture.getLectureID())
+                            .lectureName(lecture.getName())
+                            .platform(lecture.getPlatform().toString())
+                            .teacher(lecture.getTeacher())
+                            .imageUrl(imageUrl)
+                            .build();
+                })
+                .collect(Collectors.toList());
     }
 }
