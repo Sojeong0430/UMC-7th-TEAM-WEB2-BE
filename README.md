@@ -10,13 +10,15 @@
 </div>
 
 ## REVIEW IN CLASS
-다양한 강의 리뷰를 찾아보고, 직접 리뷰를 등록할 수 있는 데스크탑 웹입니다.
+다양한 강의 리뷰를 찾아보고, 직접 리뷰를 등록할 수 있는 데스크탑 웹입니다. 
+<br/>
+<br/>
 ## BACKEND Developer
 | <center>유예원</center>| <center>이소정</center>| <center>전하경</center>| <center>정지영</center>| <center>최유리</center>| 
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| <center> <img width="150px" src="https://avatars.githubusercontent.com/u/150879545?v=4" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/u/139054208?v=4" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/u/90364839?v=4" /></center> |
-| [@jinhyo0](https://github.com/jinhyo0) | [@phjlia2430](https://github.com/phjlia2430)| [@hansoojeongsj](https://github.com/hansoojeongsj) |
-
+| <center> <img width="150px" src="https://avatars.githubusercontent.com/Yewon0106" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/Sojeong0430" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/Jeon-hakyung" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/gyjeong021" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/techncherry" /></center> |
+| [@Yewon0106](https://github.com/Yewon0106) | [@Sojeong0430](https://github.com/Sojeong0430)| [@Jeon-hakyung](https://github.com/Jeon-hakyung) | [@gyjeong021](https://github.com/gyjeong021) | [@techncherry](https://github.com/techncherry) |
+<br/>
 
 ## 역할 분담
 
@@ -26,7 +28,7 @@
 
 ### 배포
 - AWS 배포 **`지영`**
-- S3 설정 **`하경`**
+- 이미지 + S3 설정 **`하경`**
 
 
 ### API
@@ -42,27 +44,28 @@
 
 <br/>
 
-## 컨벤션 및 브랜치 전략
 
-### 커밋컨벤션
+
+## 커밋컨벤션
 
 | 커밋 유형  | 의미                                                                                  |
 | ---------- | ------------------------------------------------------------------------------------- |
-| `init`     | 초기 세팅시에만 사용                             |
-| `feat`     | 새로운 기능 추가                             |
-| `fix`      | 버그 수정                   |
-| `docs`     | 문서 추가, 수정, 삭제                                                          |
-| `style`    | 코드 formatting, 세미콜론 누락, 코드 자체의 변경이 없는 경우 |
-| `refactor` | 코드 리팩토링       |
-| `test`     | 테스트 코드, 리팩토링 테스트 코드 추가                                                |
-| `chore`    | 패키지 매니저 수정, 그 외 기타 수정 ex).gitignore                    |
-| `design`   | CSS 등 사용자 UI 디자인 변경                                                          |
-| `comment`  | 필요한 주석 추가 및 변경                                                              |
-| `deploy`   | 배포 관련 |
-| `setting`   | 개발 환경 세팅                                                         |
+| 🎉 `Init`     | 초기 세팅시에만 사용                             |
+| ✨ `Feat`     | 새로운 기능 추가                             |
+| 🐛 `Fix`      | 버그 수정                   |
+| 📝 `Docs`     | 문서 추가, 수정, 삭제                                                          |
+| 🎨 `Style`    | 코드 formatting, 세미콜론 누락, 코드 자체의 변경이 없는 경우 |
+| ♻️ `Refactor` | 코드 리팩토링       |
+| ✅ `Test`     | 테스트 코드, 리팩토링 테스트 코드 추가                                                |
+| ✏️ `Chore`    | 패키지 매니저 수정, 그 외 기타 수정 ex).gitignore                    |
+| 💄 `Design`   | CSS 등 사용자 UI 디자인 변경                                                          |
+| 🚚 `Rename`  | 파일명(or 폴더명) 을 수정한 경우                                                           |
+| 🔥  `Remove`   | 코드(파일) 의 삭제가 있을 때 |
+| ⚡️ `Improve`   | 성능 개선                                                        |
 
 
 
 
 ## 기술 스택
-[![My Skills](https://skillicons.dev/icons?i=html,css,react,js,styled-components)](https://skillicons.dev)
+<img height="50" src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png"> <img height="50" src="https://user-images.githubusercontent.com/25181517/183896128-ec99105a-ec1a-4d85-b08b-1aa1620b2046.png"> &nbsp; <img height="50" src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png">  &nbsp; <img height="50" src="https://user-images.githubusercontent.com/25181517/183896132-54262f2e-6d98-41e3-8888-e40ab5a17326.png">
+
