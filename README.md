@@ -18,6 +18,8 @@
 | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | <center> <img width="150px" src="https://avatars.githubusercontent.com/Yewon0106" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/Sojeong0430" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/Jeon-hakyung" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/gyjeong021" /></center> | <center><img width="150px" src="https://avatars.githubusercontent.com/techncherry" /></center> |
 | [@Yewon0106](https://github.com/Yewon0106) | [@Sojeong0430](https://github.com/Sojeong0430)| [@Jeon-hakyung](https://github.com/Jeon-hakyung) | [@gyjeong021](https://github.com/gyjeong021) | [@techncherry](https://github.com/techncherry) |
+
+FE : https://github.com/DS-UMC-7th/UMC-7th-TEAM-WEB2-FE.git
 <br/>
 
 ## 역할 분담
